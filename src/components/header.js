@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { Fragment } from "react"
+import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 const Header = ({ siteTitle }) => (
   <header
@@ -27,6 +28,24 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+
+      <ThemeToggler>
+          {
+            ({theme, toggleTheme}) => {
+              return (
+                <Fragment>
+                  <button 
+                  onClick={()=>{
+                    const nextTheme = theme === 'light' ? 'dark' : 'light'
+                    toggleTheme(nextTheme)
+                  }}
+                  >dark mode</button>  
+                </Fragment>
+              )
+            }
+          }
+          
+        </ThemeToggler> 
     </div>
   </header>
 )

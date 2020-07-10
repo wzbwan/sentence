@@ -15,12 +15,11 @@ const IndexPage = ({ data }) => (
       <Image />
     </div>
     <div>
-      <h1>句子书列表</h1>
-      {data.allStrapiBook.edges.map(({ node }) => (
+      {/* {data.allStrapiBook.edges.map(({ node }) => (
         <div key={node.id}>
           <h3>{node.name}</h3>
         </div>
-      ))}
+      ))} */}
       <h1>文章列表</h1>
       <h4>共{data.allMarkdownRemark.totalCount} 篇文章</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
@@ -37,7 +36,9 @@ const IndexPage = ({ data }) => (
           </div>
         ))}
     </div>
+    <Link to="/files/">Go to files</Link> <br />
     <Link to="/page-2/">Go to page 2</Link> <br />
+    <Link to="/game/">Go to Game Page</Link> <br />
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 )
@@ -58,14 +59,6 @@ export const query = graphql`
             slug
           }
           excerpt
-        }
-      }
-    }
-    allStrapiBook {
-      edges {
-        node {
-          id
-          name
         }
       }
     }
